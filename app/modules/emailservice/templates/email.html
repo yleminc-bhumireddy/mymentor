@@ -1,0 +1,127 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<section class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Bulk Email</h5>
+                            </div>
+<!--                            <ul class="breadcrumb">-->
+<!--                                <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>-->
+<!--                                <li class="breadcrumb-item"><a href="#!">Form Components</a></li>-->
+<!--                                <li class="breadcrumb-item"><a href="#!">Form Elements</a></li>-->
+<!--                            </ul>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <!-- [ Main Content ] start -->
+            <div class="row">
+                <!-- [ form-element ] start -->
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+<!--                            <h5>Basic Component</h5>-->
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form role="form" method="post" action="/email">
+                                        {% if form.totalSent > 0 %}
+                                        <div class="card">
+                                            <div class ="cardbody">
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            You have successfully sent to <strong>{{ form.totalSent }}</strong> candidates.
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        </div>
+                                                </div>
+                                        </div>
+                                        {% endif %}
+<!--                                        <div class="form-group">-->
+<!--                                            <label for="companyFormControlSelect">Select Customer</label>-->
+<!--                                            <select class="form-control" id="companyFormControlSelect">-->
+<!--                                                {% for o in data %}-->
+<!--                                                <option>{{ o.name }}</option>-->
+<!--                                                {% endfor %}-->
+<!--                                            </select>-->
+<!--                                        </div>-->
+                                        <br>
+                                        <div class="form-group">
+                                            <label>Subject</label>
+                                            {{ form.subject(placeholder="Java Fullstack Developer Across India", class="form-control") }}
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label>To List</label>
+<!--                                            <input type="text" class="form-control" id="tolist"  placeholder="candiate@job.com">-->
+                                            {{ form.tolist(placeholder="candiate@job.com", class="form-control") }}
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <label>Email Body</label>
+<!--                                            <textarea class="form-control" id="emailBody" rows="3"></textarea>-->
+                                            {{ form.emailBody(placeholder="", class="form-control", style="height: 200px;") }}
+                                        </div>
+                                        <br>
+                                         <div class="custom-file">
+                                              {{ form.jobDescriptionFile(placeholder="", class="form-control") }}
+                                            <label class="custom-file-label">Job Description</label>
+                                            <div class="invalid-feedback">Job Description File</div>
+                                        </div>
+                                        <br>
+                                        <button type="submit" name="send" class="btn  btn-primary">Send</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <script>
+                                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                                (function() {
+                                    'use strict';
+                                    window.addEventListener('load', function() {
+                                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                        var forms = document.getElementsByClassName('needs-validation');
+                                        // Loop over them and prevent submission
+                                        var validation = Array.prototype.filter.call(forms, function(form) {
+                                            form.addEventListener('submit', function(event) {
+                                                if (form.checkValidity() === false) {
+                                                    event.preventDefault();
+                                                    event.stopPropagation();
+                                                }
+                                                form.classList.add('was-validated');
+                                            }, false);
+                                        });
+                                    }, false);
+                                })();
+                            </script>
+                        </div>
+                    </div>
+                    <!-- Input group -->
+                </div>
+                <!-- [ form-element ] end -->
+            </div>
+            <!-- [ Main Content ] end -->
+
+        </div>
+    </section>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+    <!-- custom-chart js -->
+    <script src="/static/assets/js/pages/dashboard-main.js"></script>
+
+{% endblock javascripts %}

@@ -1,0 +1,4 @@
+mysql_host: localhost
+mysql_user: mymentor
+mysql_password: MyMentor2022
+mysql_db: mymentor
