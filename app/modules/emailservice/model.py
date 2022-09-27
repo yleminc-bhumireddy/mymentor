@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm, CSRFProtect
 from wtforms.fields import StringField, TextAreaField, IntegerField, FileField, SubmitField
+from flask_ckeditor import CKEditorField
 
 
 class EmailForm(FlaskForm):
@@ -7,6 +8,6 @@ class EmailForm(FlaskForm):
     companyId = StringField()
     tolist = StringField()
     subject = StringField()
-    emailBody = TextAreaField()
+    emailBody = CKEditorField()
     jobDescriptionFile = FileField()
     send = SubmitField()
